@@ -37,9 +37,9 @@ $(document).ready(function() {
 async function actualizarCliente() {
 
     let id = document.getElementById("cliente_id").value;
-    let correo = document.getElementById("cliente_correo").value
     let nombre = document.getElementById("cliente_nombre").value;
     let apellido = document.getElementById("cliente_apellido").value;
+    let correo = document.getElementById("cliente_correo").value
     let telefono = document.getElementById("cliente_telefono").value;
 
            // Verificar si los campos están llenos
@@ -50,7 +50,7 @@ async function actualizarCliente() {
       
     
        var validEmail =  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-      if (!validEmail.test(datos.correo)){
+      if (!validEmail.test(correo)){
         alert("El correo no es valido")
         return;
       }
@@ -76,5 +76,6 @@ async function actualizarCliente() {
     localStorage.email = correo;
 
     alert("Se han aplicado los cambios correctamente");
+    location.reload();
 }
 
