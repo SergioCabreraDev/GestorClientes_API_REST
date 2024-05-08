@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Clientes</title>
+  </head>
+  <body>
+    <header class="main-header">
+        
+      <label for="btn-nav" class="btn-nav" style="margin: 0px; background-color: transparent; padding: 1px; padding-left: 1rem;"><img src="img/menu.png" alt="" width="25px"><i class="fas fa-bars"></i></label>
+      <input type="checkbox" id="btn-nav">
+      <div class="cliente_activo">
+        <span id="usuario_correo" style="color: white;"></span>
+        <img src="img/usertrue.png" alt="" id="imguser" width="30px">
+      </div>
+      <nav>
+        <ul id="menu" class="navigation">
+          <li>
+            <a href="index.html">Inicio</a>
+         </li>
+         <li>
+            <a href="login.html">Iniciar Sesion</a> 
+         </li>
+         <li>
+            <a href="register.html">Registro</a> 
+         </li>
+         <li>
+             <a href="tabla.html" id="clientes">Tabla Clientes</a>
+         </li>
+         <li>
+             <a href="modificar-datos.html" id="moficarDatos">Modificar mis datos</a>  
+         </li>
+         <li>
+           <a href="#" id="eliminarToken">Cerrar sesion</a>  
+         </li>
+          
+      </ul>
+      </nav>
+      
+    </header>
+
+
+
+  
+
+  <div class="content">
+    
+    <div class="container">
+      <h2 class="mb-5">Table #6</h2>
+      
+
+      <div class="table-responsive">
+
+        <table class="table table-striped custom-table" id="clientes">
+          <thead>
+            <tr>
+              
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Eliminar</th>
+          
+            </tr>
+          </thead>
+          <tbody>
+            <tr scope="row">
+
+              
+                     
+            
+            </tr>
+
+            
+            
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+    
+    
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/clientes.js"></script>
+
+    <script>
+
+      // Obtener el correo del almacenamiento local
+      let correoIndex = localStorage.getItem("email");
+  
+      // Mostrar el correo en el elemento span
+      document.getElementById("usuario_correo").textContent = correoIndex;
+  
+      // Obtener el botón de logout
+      let logoutBtn = document.getElementById("eliminarToken");
+  
+      // Obtener el botón de modificar
+      let modificarBtn = document.getElementById("moficarDatos");
+  
+      // Obtener el botón de modificar
+      let clientesBtn = document.getElementById("clientes");
+  
+      // Verificar si correoIndex está vacío
+      if (!correoIndex || correoIndex.length === 0) {
+          logoutBtn.style.display = "none"; // Ocultar el botón de logout si no hay correo en el almacenamiento local
+          modificarBtn.style.display = "none";
+          clientesBtn.style.display = "none"; // Ocultar el botón de logout si no hay correo en el almacenamiento local
+          // Mostrar el correo en el elemento span
+          document.getElementById("usuario_correo").textContent = "No has iniciado sesion";
+          document.getElementById("imguser").src="img/userfalse.png";
+      }
+  
+      // Evento de clic en el botón
+      logoutBtn.addEventListener('click', function() {
+        // Eliminar el token y el correo del localStorage
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        alert('Has cerrado sesión');
+        location.reload(); // Recargar la página
+        window.location.href="index.html";
+      });
+  
+  </script>
+  </body>
+</html>

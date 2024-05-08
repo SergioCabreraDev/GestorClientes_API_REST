@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Inicio</title>
+</head>
+<body>
+    
+    
+
+  <header class="main-header">
+        
+    <label for="btn-nav" class="btn-nav" style="margin: 0px; background-color: transparent; padding: 1px; padding-left: 1rem; padding-top: 0.5rem ;"><img src="img/menu.png" alt="" width="25px"><i class="fas fa-bars"></i></label>
+    <input type="checkbox" id="btn-nav">
+    <div class="cliente_activo">
+      <span id="usuario_correo" style="color: white;"></span>
+      <img src="img/usertrue.png" alt="" id="imguser" width="30px">
+    </div>
+
+    <nav>
+      <ul id="menu" class="navigation">
+        <li>
+           <a href="index.html">Inicio</a>
+        </li>
+        <li>
+           <a href="login.html">Iniciar Sesion</a> 
+        </li>
+        <li>
+           <a href="register.html">Registro</a> 
+        </li>
+        <li>
+            <a href="tabla.html" id="clientes">Tabla Clientes</a>
+        </li>
+        <li>
+            <a href="modificar-datos.html" id="moficarDatos">Modificar mis datos</a>  
+        </li>
+        <li>
+          <a href="#" id="eliminarToken">Cerrar sesion</a>  
+        </li>
+        
+    </ul>
+    </nav>
+    
+  </header>
+
+      <center><h1 class="tituloindex">Gestor Clientes</h1>
+      <p>Primero crea un usuario, luego inicia sesion para que se debloqueen otras opciones en el menu y puedas usar la API</p>
+      </center>
+
+
+
+
+
+
+      <div class="card-client">
+        <div class="user-picture">
+            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path>
+            </svg>
+        </div>
+        <p class="name-client"> Sergio Cabrera
+            <span>Desarrollador Junior
+            </span>
+        </p>
+        <div class="social-media">
+     
+              <a href="https://www.linkedin.com/in/sergio-cabrera-dominguez-dev/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+                </svg>
+                <span class="tooltip-social">LinkedIn</span>
+            </a>
+        </div>
+    </div>
+  
+
+
+
+
+</body>
+
+<script>
+
+  // Obtener el correo del almacenamiento local
+  let correoIndex = localStorage.getItem("email");
+
+  // Mostrar el correo en el elemento span
+  document.getElementById("usuario_correo").textContent = correoIndex;
+
+  // Obtener el botón de logout
+  let logoutBtn = document.getElementById("eliminarToken");
+
+  // Obtener el botón de modificar
+  let modificarBtn = document.getElementById("moficarDatos");
+
+  // Obtener el botón de modificar
+  let clientesBtn = document.getElementById("clientes");
+
+  // Verificar si correoIndex está vacío
+  if (!correoIndex || correoIndex.length === 0) {
+      logoutBtn.style.display = "none"; // Ocultar el botón de logout si no hay correo en el almacenamiento local
+      modificarBtn.style.display = "none";
+      clientesBtn.style.display = "none"; // Ocultar el botón de logout si no hay correo en el almacenamiento local
+      // Mostrar el correo en el elemento span
+      document.getElementById("usuario_correo").textContent = "No has iniciado sesion";
+      document.getElementById("imguser").src="img/userfalse.png";
+  }
+
+  // Evento de clic en el botón
+  logoutBtn.addEventListener('click', function() {
+    // Eliminar el token y el correo del localStorage
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    alert('Has cerrado sesión');
+    location.reload(); // Recargar la página
+  });
+
+</script>
+</html>

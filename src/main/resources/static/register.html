@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Registrar</title>
+</head>
+<body>
+
+
+
+
+   
+  <header class="main-header">
+        
+    <label for="btn-nav" class="btn-nav" style="margin: 0px; background-color: transparent; padding: 1px; padding-left: 1rem;  padding-top: 0.5rem ;"><img src="img/menu.png" alt="" width="25px"><i class="fas fa-bars"></i></label>
+    <input type="checkbox" id="btn-nav">
+    <div class="cliente_activo">
+      <span id="usuario_correo" style="color: white;"></span>
+      <img src="img/usertrue.png" alt="" id="imguser" width="30px">
+    </div>
+
+    <nav>
+      <ul id="menu" class="navigation">
+        <li>
+          <a href="index.html">Inicio</a>
+       </li>
+       <li>
+          <a href="login.html">Iniciar Sesion</a> 
+       </li>
+       <li>
+          <a href="register.html">Registro</a> 
+       </li>
+       <li>
+           <a href="tabla.html" id="clientes">Tabla Clientes</a>
+       </li>
+       <li>
+           <a href="modificar-datos.html" id="moficarDatos">Modificar mis datos</a>  
+       </li>
+       <li>
+         <a href="#" id="eliminarToken">Cerrar sesion</a>  
+       </li>
+        
+    </ul>
+    </nav>
+    
+  </header>
+
+
+
+
+
+
+
+
+
+<center><h1 style="margin-top: 5%;">Registrar Cliente</h1></center>
+<form action="">
+  <div class="registro">
+      <input type="text" id="inputNombre" placeholder="nombre" class="input">
+      <input type="text" id="inputApellido" placeholder="Apellido" class="input">
+      <input type="email" id="inputCorreo" placeholder="Correo" class="input">
+      <input type="number" id="inputTelefono" placeholder="Telefono" class="input">
+      <input type="password" id="inputPassword" placeholder="password" class="input">
+      <input type="password" id="inputPassword1" placeholder="password" class="input">
+      <button type="button" onclick="registrarCliente()" class="button"> <!-- Cambio de type a "button" y agregado onclick -->
+          <div class="button-box">
+              <span class="button-elem">
+                  <svg viewBox="0 0 46 40" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
+                  </svg>
+              </span>
+              <span class="button-elem">
+                  <svg viewBox="0 0 46 40">
+                      <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
+                  </svg>
+              </span>
+          </div>
+      </button>
+  </div>
+</form>
+
+
+    <script src="js/registro.js"></script>
+    <script>
+
+      // Obtener el correo del almacenamiento local
+      let correoIndex = localStorage.getItem("email");
+  
+      // Mostrar el correo en el elemento span
+      document.getElementById("usuario_correo").textContent = correoIndex;
+  
+      // Obtener el botón de logout
+      let logoutBtn = document.getElementById("eliminarToken");
+  
+      // Obtener el botón de modificar
+      let modificarBtn = document.getElementById("moficarDatos");
+  
+      // Obtener el botón de modificar
+      let clientesBtn = document.getElementById("clientes");
+  
+      // Verificar si correoIndex está vacío
+      if (!correoIndex || correoIndex.length === 0) {
+          logoutBtn.style.display = "none"; // Ocultar el botón de logout si no hay correo en el almacenamiento local
+          modificarBtn.style.display = "none";
+          clientesBtn.style.display = "none"; // Ocultar el botón de logout si no hay correo en el almacenamiento local
+          // Mostrar el correo en el elemento span
+          document.getElementById("usuario_correo").textContent = "No has iniciado sesion";
+          document.getElementById("imguser").src="img/userfalse.png";
+      }
+  
+      // Evento de clic en el botón
+      logoutBtn.addEventListener('click', function() {
+        // Eliminar el token y el correo del localStorage
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        alert('Has cerrado sesión');
+        location.reload(); // Recargar la página
+      });
+  
+  </script>
+</body>
+</html>
